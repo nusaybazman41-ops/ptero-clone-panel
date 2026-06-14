@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+</head>
+<body>
+
+<h1>Server Dashboard</h1>
+<div id="servers"></div>
+
+<script>
+fetch("/api/servers")
+.then(res => res.json())
+.then(data => {
+  let html = "";
+  data.forEach(s => {
+    html += "<div><h3>"+s.name+"</h3><p>"+s.status+"</p></div>";
+  });
+  document.getElementById("servers").innerHTML = html;
+});
+</script>
+
+</body>
+</html>
